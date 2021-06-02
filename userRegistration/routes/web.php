@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-
+use App\Http\Controllers\Download\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +21,6 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('details', [AuthController::class, 'details'])->name('details');
 Route::post('post-details', [AuthController::class, 'postDetails'])->name('details.post');
+Route::get('download', [DownloadController::class, 'index'])->name('download');
 Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');

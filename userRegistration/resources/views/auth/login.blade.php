@@ -24,24 +24,19 @@
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <input id="login-username" name="username" type="text" class="validate" required>
                                         <label for="login-username">Username</label>
-                                        @if ($errors->has('username'))
-                                            <span class="helper-text" data-error="wrong" data-success="right">
-                                                {{ $errors->first('username') }}
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <input id="login-password" name="password" type="password" class="validate" required>
                                         <label for="login-password">Password</label>
-                                        @if ($errors->has('password'))
-                                            <span class="helper-text" data-error="wrong" data-success="right">
-                                                {{ $errors->first('password') }}
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
+                                @if (session('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <button type="submit" class="btn btn-primary">

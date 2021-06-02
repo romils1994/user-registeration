@@ -4,10 +4,10 @@
 <main>
     <div class="container">
         <div class="row valign-wrapper center-align justify-content-center">
-            <div class="col-">
+            <div class="col-md-8">
             <div class="card hoverable">
                 <div class="card-content blue lighten-5">
-                    <form action="{{ route('details.post') }}" method="POST" class="col">
+                    <form action="{{ route('details.post') }}" method="POST" class="col" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
@@ -40,6 +40,22 @@
                                         {{ $errors->first('email') }}
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field col s12 m12 l12 xl12">
+                                <div class="btn">
+                                    <span>Upload a Text file</span>
+                                    <input type="file" name="textfile" id="textfile" accept="text/plain">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" value="{{ isset($wordCount) ? $userid .'.txt' : '' }}">
+                                    @if ($errors->has('textfile'))
+                                        <span class="helper-text" data-error="wrong" data-success="right">
+                                        {{ $errors->first('textfile') }}
+                                    </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="row">
