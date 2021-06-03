@@ -20,6 +20,20 @@ class AuthController extends Controller
      */
     public function index()
     {
+        if(Auth::check()){
+            $userDetArr = Auth::user();
+            $data = [
+                'username' => $userDetArr->username,
+                'firstname' => $userDetArr->firstname,
+                'lastname' => $userDetArr->lastname,
+                'email' => $userDetArr->email
+            ];
+            $redirect = 'dashboard';
+            if (!$data['firstname'] || !$data['lastname'] || !$data['email']) {
+                $redirect = 'details';
+            }
+            return redirect()->intended($redirect);
+        }
         return view('auth.login');
     }
 
